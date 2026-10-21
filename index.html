@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mrs. Pitts’ 3rd Grade · Alpine Vista</title>
+  <meta name="description" content="Mrs. Pitts’ 3rd grade class website at Alpine Vista: reading, writing, math, history, and science practice, daily fluency, and student goals.">
+  <meta name="theme-color" content="#5b2a86">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%AD%90%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="k3-style.css">
+</head>
+<body>
+  <a class="skip" href="#app">Skip to main content</a>
+  <header id="k3-header" class="topbar"></header>
+  <main id="app" tabindex="-1"><p class="loading">Loading... ⭐</p></main>
+  <div id="k3-toast" class="toast" role="status" aria-live="polite"></div>
+  <noscript><p class="card center">This website needs JavaScript. Please turn it on.</p></noscript>
+
+  <!-- 1. Settings Mrs. Pitts edits -->
+  <script src="k3-config.js"></script>
+  <!-- 2. The engine (defines window.K3 before any content loads) -->
+  <script src="k3-engine.js"></script>
+  <!-- 3. Content. A missing file is OK: that subject just shows "Coming soon". -->
+  <script src="k3-math.js"></script>
+  <script src="k3-reading.js"></script>
+  <script src="k3-writing.js"></script>
+  <script src="k3-history.js"></script>
+  <script src="k3-science.js"></script>
+  <script src="k3-passages.js"></script>
+  <!-- 4. Sample content: loads ONLY when no real activities or passages loaded (or with ?sample=1 for testing). -->
+  <script>
+    (function () {
+      if (!window.K3) return;
+      var force = /[?&]sample=1/.test(location.search);
+      if (force || !K3.acts.length || !K3.passages.length) document.write('<script src="k3-sample.js"><\/script>');
+    })();
+  </script>
+</body>
+</html>

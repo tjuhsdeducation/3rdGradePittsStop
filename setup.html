@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Website Setup Guide · Mrs. Pitts’ 3rd Grade</title>
+  <meta name="theme-color" content="#5b2a86">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%8E%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="k3-style.css">
+  <style>
+    .guide { max-width: 900px; margin: 0 auto; }
+    .step { display: grid; grid-template-columns: 64px 1fr; gap: 16px; align-items: start; }
+    .step-n { width: 56px; height: 56px; border-radius: 50%; background: var(--deep); color: var(--gold); display: grid; place-items: center; font-family: var(--display); font-size: 1.7rem; box-shadow: 0 4px 0 var(--ink); }
+    .step h2 { margin-top: 6px; }
+    .step ol, .step ul { padding-left: 22px; } .step li { margin: 6px 0; }
+    .kbd { display: inline-block; background: var(--ink); color: #fff; border-radius: 8px; padding: 1px 9px; font-weight: 800; font-size: .92em; white-space: nowrap; }
+    pre { background: var(--ink); color: #f4ecff; padding: 14px 16px; border-radius: 14px; overflow-x: auto; font-size: .92rem; line-height: 1.5; }
+    pre b { color: var(--gold); font-weight: 800; }
+    .tip { background: #fff8e1; border: 3px solid var(--gold); border-radius: 16px; padding: 10px 16px; }
+    .warn { background: var(--bad-bg); border: 3px solid #e7a59e; border-radius: 16px; padding: 10px 16px; }
+    .toc { display: flex; flex-wrap: wrap; gap: 8px; }
+    .toc a { text-decoration: none; background: #fff; border: 2px solid var(--line); border-radius: 999px; padding: 6px 14px; }
+    @media (max-width: 560px) { .step { grid-template-columns: 1fr; } .step-n { width: 46px; height: 46px; font-size: 1.4rem; } }
+  </style>
+</head>
+<body>
+  <header class="topbar"><div class="bar-in"><a href="index.html" class="brand"><span class="logo" aria-hidden="true">🍎</span><span class="brand-t"><b>Website Setup Guide</b><small>Mrs. Pitts’ 3rd Grade · Alpine Vista</small></span></a><div class="who"><a class="btn-sign" href="index.html">🏠 Website</a></div></div></header>
+  <main id="app" class="guide">
+    <h1>⚙️ Set up your class website</h1>
+    <p class="lead">Hi, Mrs. Pitts! The website already works in <b>preview mode</b>. Follow these steps once to send every score to <b>your own Google Sheet</b>. It takes about 15 minutes.</p>
+    <nav class="toc" aria-label="Steps"><a href="#sheet">1. Sheet</a><a href="#script">2. Apps Script</a><a href="#deploy">3. Deploy</a><a href="#url">4. Paste URL</a><a href="#github">5. GitHub Pages</a><a href="#students">Students</a><a href="#passcode">Passcode</a><a href="#help">Help</a></nav>
+
+    <section class="card step" id="sheet"><div class="step-n">1</div><div><h2>📗 Make a Google Sheet</h2><ol>
+      <li>Go to <b>sheets.google.com</b>. Sign in with your <b>school</b> Google account.</li>
+      <li>Click <b>Blank spreadsheet</b>.</li>
+      <li>Name it at the top left, like <b>Pitts Class Data</b>.</li></ol>
+      <p class="muted">You own this sheet. Student scores go only here.</p></div></section>
+
+    <section class="card step" id="script"><div class="step-n">2</div><div><h2>🧩 Add the Apps Script</h2><ol>
+      <li>In your sheet, click <span class="kbd">Extensions</span> then <span class="kbd">Apps Script</span>.</li>
+      <li>A new tab opens with a little bit of code. Select all of it and delete it.</li>
+      <li>Open the file <b>Code.gs</b> from the website folder. Copy <b>everything</b> in it.</li>
+      <li>Paste it into the Apps Script page. Click 💾 <b>Save</b>.</li>
+      <li>At the top, choose <b>setupTabs</b> in the function menu and click ▶ <b>Run</b>. Allow access when Google asks. This builds every tab for you: <b>🏆 Class Overview</b> (class averages for Reading, Writing, Math, History, Science and each student’s scores), <b>⭐ Mastery</b>, <b>⚡ Fluency</b>, <b>📋 All Scores</b>, and <b>one tab for every activity</b>. Everything fills in automatically when students finish work.</li>
+      <li>Near the top you will see <code>var PASSCODE = "pitts2026";</code>. You can change the word inside the quotes. Write it down.</li></ol></div></section>
+
+    <section class="card step" id="deploy"><div class="step-n">3</div><div><h2>🚀 Deploy it as a web app</h2><ol>
+      <li>Click the blue <span class="kbd">Deploy</span> button, then <span class="kbd">New deployment</span>.</li>
+      <li>Click the ⚙️ gear next to “Select type” and pick <b>Web app</b>.</li>
+      <li>Set <b>Execute as:</b> <span class="kbd">Me</span></li>
+      <li>Set <b>Who has access:</b> <span class="kbd">Anyone</span></li>
+      <li>Click <b>Deploy</b>. Click <b>Authorize access</b>, pick your account, then <b>Advanced</b> &rarr; <b>Go to project (unsafe)</b> &rarr; <b>Allow</b>. (This is normal for your own script.)</li>
+      <li>Copy the <b>Web app URL</b>. It ends with <code>/exec</code>.</li></ol>
+      <p class="tip">💡 “Anyone” lets students send scores without signing in to Google. Only you can open the sheet. The dashboard needs your passcode to read data.</p></div></section>
+
+    <section class="card step" id="url"><div class="step-n">4</div><div><h2>🔗 Paste the URL into k3-config.js</h2>
+      <p>Open <b>k3-config.js</b> and find <code>scriptUrl</code>. Paste your URL between the quotes:</p>
+<pre>scriptUrl: "<b>https://script.google.com/macros/s/AKfy.../exec</b>",</pre>
+      <p>Also make sure the passcode matches the one in Code.gs:</p>
+<pre>teacherPasscode: "<b>pitts2026</b>",</pre></div></section>
+
+    <section class="card step" id="github"><div class="step-n">5</div><div><h2>🌐 Put the website on GitHub Pages</h2><ol>
+      <li>Go to <b>github.com</b> and sign in (or make a free account).</li>
+      <li>Click <b>+</b> (top right) &rarr; <b>New repository</b>. Name it something like <b>pitts-class</b>. Choose <b>Public</b>. Click <b>Create repository</b>.</li>
+      <li>Click <b>uploading an existing file</b>. Drag in <b>all</b> the website files: <code>index.html</code>, <code>setup.html</code>, <code>k3-style.css</code>, <code>k3-config.js</code>, <code>k3-engine.js</code>, and every <code>k3-…js</code> content file. (You do not need to upload Code.gs.) Click <b>Commit changes</b>.</li>
+      <li>Go to <b>Settings</b> &rarr; <b>Pages</b>. Under “Branch”, pick <b>main</b> and <b>/ (root)</b>. Click <b>Save</b>.</li>
+      <li>Wait 1 to 2 minutes. Your website link appears at the top of that page, like <code>https://yourname.github.io/pitts-class/</code>.</li></ol>
+      <p class="tip">💡 Test it: sign in as a student, finish an activity, then look at the <b>🏆 Class Overview</b> and <b>📋 All Scores</b> tabs in your sheet. Then open 🍎 Teacher &rarr; Dashboard &rarr; <b>☁️ Load from Sheet</b>.</p></div></section>
+
+    <section class="card" id="students"><h2>🧑‍🎓 The class list (students sign in with first + last name)</h2>
+      <p>Students sign in by typing their <b>first name</b> and <b>last name</b>. Every score is saved under that name in your Google Sheet. Capital letters, accents, and extra spaces don’t matter.</p>
+      <p class="warn">🔒 Privacy: k3-config.js can be seen by anyone who opens the website code, so <b>don’t type real full names there</b>. Use the <b>Name Code Maker</b> below instead. It turns each name into a secret code. The website can check a typed name against the code, but nobody can read the names from it. Real names only go to your private Google Sheet.</p>
+      <h3>🔐 Name Code Maker</h3>
+      <p>Type one student per line (first and last name), then press <b>Make codes</b>. This all happens on your computer, and nothing is sent anywhere.</p>
+      <textarea id="nc-in" rows="8" style="width:100%;font:inherit;padding:10px;border:3px solid #ddd0f1;border-radius:14px" placeholder="Ana Ramirez&#10;Mateo Lopez&#10;Kaylee Johnson"></textarea>
+      <p><button type="button" id="nc-go" class="btn">🔐 Make codes</button> <button type="button" id="nc-copy" class="btn btn-ghost">📋 Copy</button></p>
+      <pre id="nc-out">students: [
+]</pre>
+      <ol><li>Copy the result and paste it over the <code>students: [ … ]</code> part of <b>k3-config.js</b> on GitHub (✏️ pencil &rarr; paste &rarr; <b>Commit changes</b>).</li>
+        <li>Now only names on your list can sign in. If a student types a name that isn’t on the list, Elvis asks them to check their spelling.</li>
+        <li>Keep your typed list somewhere private (like a Google Doc) so you can add students later.</li>
+        <li>While the list is empty, the site accepts any name. That’s handy for testing, but typos can make extra rows in your sheet.</li></ol></section>
+
+    <section class="card" id="passcode"><h2>🔑 Change the teacher passcode</h2><ol>
+      <li>In <b>k3-config.js</b>, change <code>teacherPasscode: "pitts2026"</code>.</li>
+      <li>In <b>Apps Script</b>, change <code>var PASSCODE = "pitts2026";</code> to the <b>same</b> word. Save.</li>
+      <li>In Apps Script click <span class="kbd">Deploy</span> &rarr; <span class="kbd">Manage deployments</span> &rarr; ✏️ &rarr; Version: <b>New version</b> &rarr; <b>Deploy</b>. The URL stays the same.</li></ol>
+      <p class="muted">The passcode is a light lock to keep students out of the teacher area. Anyone who reads the website code can find it.</p></section>
+
+    <section class="card" id="more"><h2>✏️ Other things you can change in k3-config.js</h2><ul>
+      <li><b>announcements</b>: messages on the home page. One per line, in quotes, with commas.</li>
+      <li><b>mascot</b>: an emoji for the logo, like <code>"🦅"</code>.</li>
+      <li><b>goals.mathFactsPerMin</b>: the fact sprint goal line (now 30).</li>
+      <li><b>goals.readingWCPM</b>: words correct per minute goals. They are set to the Hasbrouck &amp; Tindal (2017) grade 3, 50th percentile national norms: fall 83, winter 97, spring 112.</li></ul></section>
+
+    <section class="card" id="help"><h2>🛟 Help</h2><ul>
+      <li><b>Scores do not show in the sheet?</b> Check that <code>scriptUrl</code> ends with <code>/exec</code> and that “Who has access” is <b>Anyone</b>.</li>
+      <li><b>Dashboard says “Wrong passcode”?</b> The passcode in Code.gs and k3-config.js must match. Deploy a new version after changing Code.gs.</li>
+      <li><b>No internet?</b> Scores are saved on the device and sent later.</li>
+      <li><b>Mastery tab</b> rebuilds itself after every score. You can also use the sheet menu <b>🍎 Class Website &rarr; Rebuild Mastery tab</b>.</li>
+      <li><b>Try it without a sheet:</b> in 🍎 Teacher &rarr; Dashboard, click <b>🧪 Show demo data</b>.</li></ul>
+      <p class="center"><a class="btn btn-gold btn-xl" href="index.html#/teacher">🍎 Go to the teacher area</a></p></section>
+  </main>
+<script>
+(function () {
+  function norm(n) { return String(n || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9 '-]/g, " ").replace(/\s+/g, " ").trim(); }
+  function code(n) { var str = norm(n), h1 = 0xdeadbeef, h2 = 0x41c6ce57; for (var i = 0; i < str.length; i++) { var ch = str.charCodeAt(i); h1 = Math.imul(h1 ^ ch, 2654435761); h2 = Math.imul(h2 ^ ch, 1597334677); } h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909); h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909); return "#" + (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(36); }
+  var inp = document.getElementById("nc-in"), out = document.getElementById("nc-out");
+  document.getElementById("nc-go").onclick = function () {
+    var names = inp.value.split(/\n/).map(function (x) { return x.trim(); }).filter(Boolean);
+    out.textContent = "students: [\n" + names.map(function (n, i) { var p = n.split(/\s+/); return '    "' + code(n) + '"' + (i < names.length - 1 ? "," : "") + "   // student " + (i + 1) + " (" + p[0][0].toUpperCase() + "." + (p.length > 1 ? p[p.length - 1][0].toUpperCase() + "." : "") + ")"; }).join("\n") + "\n  ],";
+  };
+  document.getElementById("nc-copy").onclick = function () { try { navigator.clipboard.writeText(out.textContent); this.textContent = "✅ Copied"; } catch (e) {} };
+})();
+</script>
+</body>
+</html>
